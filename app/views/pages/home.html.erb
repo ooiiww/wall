@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span10 offset1">
+    <form class="well form-inline">
+      <input id="keyword" type="text" class="input-big" placeholder="Key Word" value="<%= @keyword %>"/>
+      <button id="refresh" class="btn btn-primary" onclick="return false;">Refresh</button>
+      <label class="offset1"><b>Wall Control Panel</b></label>
+      <div class="pull-right">
+        <button id="auto" class="btn btn-success" onclinck="return false;">Start</button>
+        <label> Auto refresh by </label>
+        <input type="text" class="input-small" placeholder="Secends" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+<div class="span5 offset1">
+  <div id="source-header"></div>
+  <div id="source-wall">
+    <dl></dl>
+  </div>
+</div>
+
+<div class="span5 offset0">
+  <div id="censor-header"></div>
+  <div id="censor-wall">
+    <dl></dl>
+  </div>
+</div>
+</div>
