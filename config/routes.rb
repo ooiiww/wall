@@ -4,6 +4,7 @@ Wall::Application.routes.draw do
   post 'api' => 'pages#create', :as => :create
   delete 'api' => 'pages#destroy', :as => :destroy
   get 'about' => 'pages#about', :as => :about
+  get 'unlock' => 'pages#unlock', :as => :unlock
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

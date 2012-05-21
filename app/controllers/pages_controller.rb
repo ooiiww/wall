@@ -28,4 +28,13 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def unlock
+    password = params[:password]
+    if password == "asdfjiop"
+      render :text => "true"
+    else
+      render :text => "false"
+    end
+  end
 end

@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  count = 0
+  unlock = true
+
   sourceClick = (event) ->
     tweet = $(this)
     tweet.fadeOut ()->
@@ -19,6 +22,13 @@ $ ->
     tweet.click sourceClick
 
   refresh = (keyword) ->
+    count++
+    if count % 50 == 0 and unlock
+      $('#myModal').modal()
+      $("#password-error").html "Please enter"
+      $("#password-error").css "color", ""
+
+
     $("#refresh").attr("class", "btn disabled")
     $("#refresh").html "Refreshing"
     $.ajax {
@@ -68,3 +78,18 @@ $ ->
   keyword = $("#keyword")[0].value
   if keyword
     refresh(keyword)
+
+  $('#myModal').modal()
+
+  $("#unlock").click () ->
+    password = $("#password")[0].value
+    $.ajax {
+      url: "/unlock?password=#{password}"
+      success: (result) ->
+        if result == "true"
+          unlock = false
+          $('#myModal').modal("hide")
+        else
+          $("#password-error").html "Wrong Serial Numbers"
+          $("#password-error").css "color", "red"
+    }
